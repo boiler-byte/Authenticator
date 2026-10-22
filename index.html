@@ -4,9 +4,9 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#080d18">
-<meta name="description" content="Nexus Authenticator. Deine Zwei-Faktor-Codes in einem lokal verschlüsselten Tresor. Eine eigenständige HTML-Datei ohne externe Abhängigkeiten.">
+<meta name="description" content="Authenticator. Deine Zwei-Faktor-Codes in einem lokal verschlüsselten Tresor. Eine eigenständige HTML-Datei ohne externe Abhängigkeiten.">
 <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'unsafe-inline'; style-src 'unsafe-inline'; img-src 'self' data: blob:; media-src blob:; connect-src 'none'; font-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'">
-<title>Nexus — Authenticator</title>
+<title>Authenticator</title>
 <style>
 :root{color-scheme:dark;--bg:#080c15;--panel:rgba(18,27,45,.72);--panel-solid:#111b2c;--accent:#72a7ff;--accent-bright:#4387ff;--rgb:92,150,255;--soft:rgba(var(--rgb),.10);--line:rgba(151,174,216,.14);--muted:#8998b1;--text:#ecf2ff;--danger:#ff828c;--shadow:0 24px 80px #0005;font-family:Inter,ui-sans-serif,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;font-synthesis:none}
 :root[data-privacy=off]{--accent:#ff8991;--accent-bright:#f75e6b;--rgb:248,98,113;--panel:rgba(39,23,35,.75);--panel-solid:#251821;--line:rgba(211,149,161,.16)}
@@ -21,6 +21,43 @@ main{width:min(1060px,calc(100% - 80px));margin:0 auto;min-height:calc(100dvh - 
 @media(min-width:1500px){.auth-view{gap:120px;padding:100px 0}.auth-intro h1{font-size:57px}.auth-card{padding:38px}.vault-visual{margin-top:32px}}@media(max-width:1000px){.topbar-inner,.footer{width:calc(100% - 44px)}main{width:calc(100% - 64px)}.auth-view{gap:42px}.auth-intro h1{font-size:43px;letter-spacing:-2px}.auth-card{padding:27px}.security-pill{display:none}.card-copy{padding:20px 18px}.otp-code{font-size:30px;letter-spacing:2px}.otp-code.eight{font-size:25px;letter-spacing:.5px}.card-action{width:37px}.code-row{gap:5px}.sorting .accounts-list{grid-template-columns:1fr}.sort-controls{padding-right:16px}}
 @media(max-width:720px){.topbar{height:78px}.topbar-inner{gap:13px;width:calc(100% - 32px)}.brandname{font-size:18px;letter-spacing:3px}.brandname small{font-size:7px;letter-spacing:2.4px}.brandmark{width:32px;height:37px}.searchbox{max-width:none;margin-left:0}.topbar.unlocked .brandname{display:none}.topbar.unlocked .brand{gap:0}.topbar.unlocked .searchbox input{font-size:12px}.toolbar-actions{gap:0}.toolbar-actions .iconbutton{width:36px}.search-shortcut{display:none}main{width:calc(100% - 36px);min-height:calc(100dvh - 151px)}.auth-view{display:block;padding:38px 0}.auth-intro{margin:0 auto 29px;text-align:center;max-width:440px}.auth-intro .eyebrow{justify-content:center;font-size:9px}.auth-intro h1{font-size:37px;line-height:1.15;margin:15px 0 13px;letter-spacing:-1.6px}.auth-intro>p{margin:0 auto;font-size:12px;max-width:330px}.vault-visual,.intro-footnote{display:none}.auth-card{max-width:440px;margin:0 auto;padding:26px}.auth-card h2{font-size:21px}.section-icon{margin-bottom:16px}.auth-card .intro{margin-bottom:20px}.accounts-view{padding-top:30px}.accounts-heading{margin-bottom:27px;align-items:flex-start;gap:15px}.accounts-heading h1{font-size:27px;margin-top:8px}.accounts-heading p{font-size:11px;max-width:230px}.accounts-heading .eyebrow{font-size:8px;letter-spacing:1.6px}.heading-buttons{margin-top:24px}.heading-buttons .btn{width:41px;height:41px;padding:0}.heading-buttons .btn span{display:none}.heading-buttons .secondary-add{display:none}.accounts-list{grid-template-columns:1fr;gap:12px}.card-copy{padding:19px 21px 16px}.otp-code{font-size:36px;letter-spacing:4px}.otp-code.eight{font-size:29px;letter-spacing:2px}.card-action{width:42px}.timer,.timer svg{width:39px;height:39px}.code-row{margin-top:17px}.footer{width:calc(100% - 36px);font-size:8px;min-height:73px;gap:10px}.footer-right{gap:12px}.footer-version{display:none}.footer-left{font-size:8px;letter-spacing:0;gap:5px}.list-caption{font-size:8px}.privacy-banner{align-items:flex-start;font-size:11px;padding:11px}.privacy-banner button{font-size:10px;max-width:73px;white-space:normal;text-align:right}.modal-overlay{padding:16px}.dialog{max-height:calc(100dvh - 32px);border-radius:16px}.dialog-head{padding:22px 21px 0}.dialog-body{padding:21px}.dialog-head h2{font-size:20px}.fields-row.three{grid-template-columns:1.3fr 1fr 1fr;gap:9px}.fields-row{gap:11px}.dialog-actions{flex-wrap:wrap}.dialog-actions .btn{padding:10px 13px}.tabs .tab{padding:9px 6px;font-size:10px}.empty-state{min-height:325px;padding:32px 18px}.empty-actions{flex-direction:column;gap:9px}.empty-actions .btn{width:220px}.workspace-tip{font-size:9px;text-align:center}.sortbar{bottom:13px;gap:9px;padding:12px}.sortbar p{font-size:9px}.sortbar .btn{padding:8px 12px}.about-grid{gap:8px}.about-item{padding:11px}.about-item strong{font-size:12px}.toasts{bottom:18px}.toast{font-size:11px}.sorting .card-copy{padding-right:11px}.sorting .otp-code{font-size:28px;letter-spacing:2px}.sorting .otp-code.eight{font-size:24px;letter-spacing:0}}
 @media(prefers-reduced-motion:reduce){*,*:before,*:after{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+
+
+/* Authenticator 1.1: shield disclosure, explicit search spacing, bright reset warning. */
+.brandname{font-size:21px;letter-spacing:.2px;font-weight:600;line-height:1.2}
+.brand-menu-button{display:flex;align-items:center;gap:3px;padding:3px;border:0;border-radius:12px;background:transparent;color:var(--accent);min-height:48px}
+.brand-menu-button:disabled{opacity:1;cursor:default}
+.brand-menu-button:not(:disabled):hover,.brand-menu-button[aria-expanded=true]{background:var(--soft)}
+.brand-menu-button .menu-chevron{width:13px;height:13px;opacity:.8}
+.brand-menu-button:disabled .menu-chevron{display:none}
+#shieldMenu .menu{left:0;right:auto;top:57px;width:280px;max-width:calc(100vw - 32px)}
+.searchbox #search{padding:0 44px;height:44px;min-width:0}
+.searchbox>.icon{pointer-events:none;top:50%;transform:translateY(-50%)}
+#search::-webkit-search-cancel-button{-webkit-appearance:none;appearance:none}
+#search::-webkit-search-decoration{-webkit-appearance:none;appearance:none}
+.dropzone{display:block;width:100%;box-sizing:border-box}
+.modal-overlay.danger-mode{background:rgba(255,246,225,.96);backdrop-filter:blur(15px);color-scheme:light}
+.modal-overlay.danger-mode .dialog{--text:#381414;--muted:#79524a;--line:#e8c9bd;--accent:#ab201f;--rgb:171,32,31;--soft:#fff0e9;--danger:#ad2525;background:#fffdf7;color:var(--text);border:2px solid #d34432;box-shadow:0 22px 110px #7f281433;max-width:570px;color-scheme:light}
+.modal-overlay.danger-mode .dialog-head{padding-top:27px}
+.modal-overlay.danger-mode .dialog-head h2{font-size:25px;font-weight:700;color:#9c2020}
+.modal-overlay.danger-mode .dialog-head p{color:#744c42;font-size:12px}
+.modal-overlay.danger-mode .iconbutton{color:#8d4838}
+.modal-overlay.danger-mode .iconbutton:hover{background:#fff0e8;color:#69261e}
+.wipe-signal{display:flex;align-items:center;gap:11px;color:#9f201e;margin-bottom:19px;font-weight:750;letter-spacing:1.5px;font-size:12px}
+.wipe-signal>.icon{width:31px;height:31px;stroke-width:2}
+.modal-overlay.danger-mode .notice.warning{display:block;border:1px solid #df8b2e;border-left:5px solid #d13e26;background:#fff0bd;color:#4c2512;padding:17px 18px;font-size:13px;line-height:1.75}
+.modal-overlay.danger-mode .notice.warning strong{display:block;font-size:16px;font-weight:750;line-height:1.45;margin-bottom:8px;color:#81221b}
+.modal-overlay.danger-mode .field>label{color:#60332b;font-size:12px;font-weight:650}
+.modal-overlay.danger-mode input:not([type=checkbox]):not([type=radio]){background:#fff;color:#381414;border:1px solid #c79c8d;caret-color:#a52121}
+.modal-overlay.danger-mode input::placeholder{color:#956e63}
+.modal-overlay.danger-mode .btn.subtle{background:#fff;color:#4b3029;border:1px solid #be9b8e}
+.modal-overlay.danger-mode .btn.subtle:hover{background:#fff0d8;border-color:#986754}
+.modal-overlay.danger-mode .btn.danger{background:#b92727;border-color:#a32020;color:#fff}
+.modal-overlay.danger-mode .btn.danger:hover{background:#a31c1c}
+.modal-overlay.danger-mode .inline-error{background:#fff1ee;border-color:#dba093;color:#9e2625}
+.wipe-audio-status{display:flex;gap:8px;align-items:flex-start;font-size:11px;color:#79524a;line-height:1.6;margin:16px 0 0}
+.wipe-audio-status .icon{width:15px;height:15px;margin-top:1px;color:#ad4b29}
+@media(max-width:720px){.brandname{font-size:19px;letter-spacing:0}.brand-menu-button{min-height:43px;padding:1px;gap:2px}.brand-menu-button .menu-chevron{width:11px;height:11px}#shieldMenu .menu{top:50px}.topbar.unlocked .topbar-inner{gap:12px}.topbar.unlocked .searchbox{min-width:0}.modal-overlay.danger-mode{padding:13px}.modal-overlay.danger-mode .dialog-head h2{font-size:23px}.modal-overlay.danger-mode .notice.warning{padding:15px}.modal-overlay.danger-mode .dialog-actions{justify-content:space-between}.wipe-signal{font-size:11px}}
 </style>
 </head>
 <body>
@@ -57,13 +94,13 @@ main{width:min(1060px,calc(100% - 80px));margin:0 auto;min-height:calc(100dvh - 
 <symbol id="i-folder" viewBox="0 0 24 24"><path d="M3 7V4h7l2 3h9v13H3V7Z"/></symbol>
 </defs></svg>
 <header class="topbar" id="topbar"><div class="topbar-inner">
-<div class="brand" aria-label="Nexus Authenticator"><div class="brandmark"><svg class="icon lg"><use href="#i-shield"/></svg></div><div class="brandname">NEXUS<small>AUTHENTICATOR</small></div></div>
+<div class="brand" aria-label="Authenticator"><div class="menu-wrap" id="shieldMenu"><button class="brand-menu-button" id="menuButton" type="button" title="Menü nach dem Entsperren verfügbar" aria-label="Authenticator-Menü" aria-expanded="false" aria-controls="mainMenu" disabled><span class="brandmark"><svg class="icon lg" aria-hidden="true"><use href="#i-shield"/></svg></span><svg class="icon menu-chevron" aria-hidden="true"><use href="#i-down"/></svg></button><nav class="menu" id="mainMenu" aria-label="Aktionen" hidden>
+<button data-action="scan"><svg class="icon"><use href="#i-scan"/></svg>QR-Code scannen</button><button data-action="manual"><svg class="icon"><use href="#i-key"/></svg>Einrichtungsschlüssel eingeben</button><button data-action="sort"><svg class="icon"><use href="#i-grip"/></svg>Manuelle Sortierung</button><hr><button data-action="import"><svg class="icon"><use href="#i-import"/></svg>Import</button><button data-action="export"><svg class="icon"><use href="#i-export"/></svg>Export</button><hr><button data-action="privacy" id="privacyMenu"><svg class="icon"><use href="#i-shield"/></svg><span>Privatsphäre aktivieren</span><svg class="icon menu-state"><use href="#i-check"/></svg></button><button data-action="about"><svg class="icon"><use href="#i-info"/></svg>Über diesen Tresor</button><hr><button class="destructive" data-action="wipe"><svg class="icon"><use href="#i-trash"/></svg>Tresor zurücksetzen</button>
+</nav></div><div class="brandname">Authenticator</div></div>
 <div class="top-spacer" id="topSpacer"></div>
 <div class="security-pill" id="securityPill"><svg class="icon"><use href="#i-shield"/></svg><span>Lokal. Verschlüsselt. Dein.</span></div>
-<div class="searchbox" id="searchBox" hidden><svg class="icon"><use href="#i-search"/></svg><label class="visually-hidden" for="search">Accounts durchsuchen</label><input id="search" type="search" placeholder="Accounts durchsuchen …" autocomplete="off" spellcheck="false"><span class="search-shortcut" id="searchShortcut">/</span><button id="clearSearch" aria-label="Suche löschen" hidden><svg class="icon sm"><use href="#i-x"/></svg></button></div>
-<div class="toolbar-actions" id="toolbarActions" hidden><button class="iconbutton" id="lockButton" title="Tresor sperren" aria-label="Tresor sperren"><svg class="icon"><use href="#i-lock"/></svg></button><div class="menu-wrap"><button class="iconbutton" id="menuButton" title="Menü" aria-label="Menü öffnen" aria-expanded="false" aria-controls="mainMenu"><svg class="icon"><use href="#i-more"/></svg></button><nav class="menu" id="mainMenu" aria-label="Aktionen" hidden>
-<button data-action="scan"><svg class="icon"><use href="#i-scan"/></svg>QR-Code scannen</button><button data-action="manual"><svg class="icon"><use href="#i-key"/></svg>Einrichtungsschlüssel eingeben</button><button data-action="sort"><svg class="icon"><use href="#i-grip"/></svg>Manuelle Sortierung</button><hr><button data-action="import"><svg class="icon"><use href="#i-import"/></svg>Import</button><button data-action="export"><svg class="icon"><use href="#i-export"/></svg>Export</button><hr><button data-action="privacy" id="privacyMenu"><svg class="icon"><use href="#i-shield"/></svg><span>Privatsphäre aktivieren</span><svg class="icon menu-state"><use href="#i-check"/></svg></button><button data-action="about"><svg class="icon"><use href="#i-info"/></svg>Über diesen Tresor</button><hr><button class="destructive" data-action="wipe"><svg class="icon"><use href="#i-trash"/></svg>Tresor zurücksetzen</button>
-</nav></div></div>
+<div class="searchbox" id="searchBox" hidden><svg class="icon" aria-hidden="true"><use href="#i-search"/></svg><label class="visually-hidden" for="search">Accounts durchsuchen</label><input id="search" type="search" placeholder="Accounts durchsuchen …" autocomplete="off" spellcheck="false"><span class="search-shortcut" id="searchShortcut">/</span><button id="clearSearch" aria-label="Suche löschen" hidden><svg class="icon sm"><use href="#i-x"/></svg></button></div>
+<div class="toolbar-actions" id="toolbarActions" hidden><button class="iconbutton" id="lockButton" title="Tresor sperren" aria-label="Tresor sperren" hidden><svg class="icon"><use href="#i-lock"/></svg></button></div>
 </div></header>
 <main id="main"><section id="authView" class="auth-view" aria-label="Tresor entsperren">
 <div class="auth-intro"><div class="eyebrow"><span class="status-dot"></span>DEIN DIGITALER TRESOR</div><h1>Deine Identität.<br><span>Deine Kontrolle.</span></h1><p>Ein Ort für deine Zwei-Faktor-Codes.<br>Lokal gespeichert. Mit deinem Passwort verschlüsselt.</p><div class="vault-visual" aria-hidden="true"><div class="orbit"></div><div class="orbit two"></div><div class="orbit three"></div><div class="vault-mark"><svg class="icon"><use href="#i-lock"/></svg></div><div class="orbit-tag mono">AES · 256</div></div><div class="intro-footnote"><span><svg class="icon"><use href="#i-local"/></svg>BLEIBT AUF DEINEM GERÄT</span><span><svg class="icon"><use href="#i-shield"/></svg>OHNE CLOUD-SYNC</span></div></div>
@@ -80,7 +117,7 @@ main{width:min(1060px,calc(100% - 80px));margin:0 auto;min-height:calc(100dvh - 
 <div class="empty-state" id="emptyState"><div class="empty-icon"><svg class="icon"><use href="#i-key"/></svg></div><h2 id="emptyTitle">Dein Tresor ist bereit.</h2><p id="emptyText">Füge deinen ersten Account hinzu. Scanne einen QR-Code oder gib den Einrichtungsschlüssel ein.</p><div class="empty-actions" id="emptyActions"><button class="btn primary" data-action="scan"><svg class="icon"><use href="#i-scan"/></svg>QR-Code scannen</button><button class="btn" data-action="manual"><svg class="icon"><use href="#i-key"/></svg>Schlüssel eingeben</button></div><button class="btn subtle" id="emptyClearSearch" hidden>Suche zurücksetzen</button></div>
 <div class="workspace-tip" id="workspaceTip"><svg class="icon"><use href="#i-clock"/></svg>Die Codes erneuern sich automatisch. Halte deine Gerätezeit aktuell.</div>
 </section></main>
-<footer class="footer"><div class="footer-left"><svg class="icon"><use href="#i-shield"/></svg><span id="footerState">AES-256-GCM</span><span class="dot">·</span><span>LOKAL VERSCHLÜSSELT</span></div><div class="footer-right"><span class="footer-version mono">NEXUS / 1.0</span><button data-action="about">Über diesen Tresor <span aria-hidden="true">↗</span></button></div></footer>
+<footer class="footer"><div class="footer-left"><svg class="icon"><use href="#i-shield"/></svg><span id="footerState">AES-256-GCM</span><span class="dot">·</span><span>LOKAL VERSCHLÜSSELT</span></div><div class="footer-right"><span class="footer-version mono">AUTHENTICATOR / 1.1</span><button data-action="about">Über diesen Tresor <span aria-hidden="true">↗</span></button></div></footer>
 <div class="sortbar" id="sortBar" hidden><svg class="icon"><use href="#i-grip"/></svg><div><strong>Deine Reihenfolge.</strong><p>Am Griff ziehen oder die Pfeile verwenden.</p></div><button class="btn primary" id="finishSort"><svg class="icon"><use href="#i-check"/></svg>Fertig</button></div>
 <div class="modal-overlay" id="modalOverlay" hidden><section class="dialog" id="dialog" role="dialog" aria-modal="true" aria-labelledby="dialogTitle" tabindex="-1"><header class="dialog-head"><div><h2 id="dialogTitle"></h2><p id="dialogSubtitle"></p></div><button class="iconbutton" id="closeDialog" aria-label="Dialog schließen"><svg class="icon"><use href="#i-x"/></svg></button></header><div class="dialog-body" id="dialogBody"></div></section></div>
 <div class="toasts" id="toasts" role="status" aria-live="polite" aria-atomic="true"></div>
@@ -790,7 +827,13 @@ main{width:min(1060px,calc(100% - 80px));margin:0 auto;min-height:calc(100dvh - 
         if (field === 5) batchId = value;
       } else reader.skip(wire,field);
     }
-    if (version !== 0n && version !== 1n) fail('Diese Version des Google-Exports wird noch nicht unterstützt.');
+    // Google Authenticator also emits migration version 2 with these same OTP fields.
+    // Reference: https://github.com/krissrex/google-authenticator-exporter/issues/26
+    // This migration version is independent of our JSON/vault envelope version.
+    // Keep the account, enum, protobuf wire-type and batch validation below unchanged.
+    if (version !== 0n && version !== 1n && version !== 2n) {
+      fail('Die Google-Exportversion ' + version.toString() + ' wird nicht unterstützt. Unterstützt werden die Versionen 0, 1 und 2.');
+    }
     if (size === 0n) size = 1n;
     if (size < 1n || size > 1000n || index >= size) fail('Der Google-Export enthält ungültige Angaben zur QR-Serie.');
     if (!parameters.length) fail('Der Google-Export enthält keine Accounts.');
@@ -1718,7 +1761,8 @@ var qrcodegen;
   const live = state => active === state && !state.closed && N().isUnlocked();
   const notice = (message, warning = false) => '<div class="notice' + (warning ? ' warning' : '') + '">' + ico(warning ? 'alert' : 'check') + '<div>' + esc(message) + '</div></div>';
   const currentError = message => { const element = $('importError'); if (element) N().showError(element,message || ''); };
-  function errorMessage(error) {
+  const errorMessage = error => N().formatError(error);
+  function cameraAccessError(error) {
     if (error?.name === 'NotAllowedError' || error?.name === 'PermissionDeniedError') return 'Der Kamerazugriff wurde nicht erlaubt. Erlaube ihn in den Website-Einstellungen oder lade ein QR-Bild hoch.';
     if (error?.name === 'NotFoundError' || error?.name === 'DevicesNotFoundError') return 'Es wurde keine Kamera gefunden. Du kannst stattdessen ein QR-Bild hochladen.';
     if (error?.name === 'NotReadableError' || error?.name === 'TrackStartError') return 'Die Kamera ist gerade nicht verfügbar. Schließe andere Kamera-Apps und versuche es erneut.';
@@ -1744,7 +1788,9 @@ var qrcodegen;
     state.working = working;
     if (!live(state)) return;
     $('importShell')?.setAttribute('aria-busy',String(working));
-    $('importShell')?.querySelectorAll('[data-import-tab]').forEach(node => {node.disabled = working;});
+    $('importShell')?.querySelectorAll('[data-import-tab],.import-upload-input').forEach(node => {node.disabled = working;});
+    const drop = $('importDropzone');
+    if (drop) { drop.setAttribute('aria-disabled',String(working)); drop.tabIndex = working ? -1 : 0; }
     if (button) N().setBusy(button,working,label);
   }
   function tabsMarkup(tab) {
@@ -1759,10 +1805,10 @@ var qrcodegen;
       token:++sequence, closed:false, abort:new AbortController(), tab:['camera','image','json'].includes(initial)?initial:'image',
       stage:'input', queue:[], skipped:[], repeated:0, batches:new Map(), pages:new Set(), extras:new Set(),
       partialConfirmed:false, listLimit:100, working:false, cameraRun:0, stream:null, video:null, timer:null,
-      detector:null, detectorPromise:null, pendingEncrypted:null
+      detector:null, detectorPromise:null, pendingEncrypted:null, playbackPending:false, cameraScanning:false, onCameraPlaying:null
     };
     active = state;
-    const style = '<style>.import-summary{display:flex;align-items:center;gap:9px;flex-wrap:wrap;margin:0 0 14px;font-size:11px;color:var(--muted)}.import-summary strong{font-size:16px;font-weight:550;color:var(--accent)}.import-series{margin:13px 0;font-size:11px;color:var(--muted);line-height:1.7}.import-series p{margin:3px 0}.import-mini{font-size:10px;color:var(--muted);margin:10px 0;line-height:1.7}.import-upload-input{position:absolute;width:1px!important;height:1px!important;opacity:0;overflow:hidden;padding:0!important;min-height:0!important;clip:rect(0,0,0,0)}.import-key-form{margin-top:17px}.import-key-form .field{margin-bottom:9px}.import-partial{display:flex;gap:10px;font-size:11px;line-height:1.7;color:#edc8b4;margin:14px 0}.import-warning-list{font-size:11px;line-height:1.7;color:var(--muted);padding-left:18px;overflow-wrap:anywhere;max-height:150px;overflow:auto}.import-toolbar{display:flex;gap:8px;flex-wrap:wrap}.import-source-hint{font-size:10px;line-height:1.7;color:var(--muted);margin:13px 0}.import-draft{display:flex;align-items:center;justify-content:space-between;gap:10px;border-top:1px solid var(--line);padding-top:15px;margin-top:18px;font-size:11px;color:var(--muted)}.import-row .tag{white-space:nowrap;flex-shrink:0}.import-row.is-duplicate{opacity:.7}.import-row .import-account{overflow-wrap:anywhere}.import-drop{transition:background .15s,border-color .15s}.import-camera-controls .btn{flex:1}.import-upload-input:focus-visible+.dropzone{outline:2px solid var(--accent)}.import-selection{font-size:11px;color:var(--muted);overflow-wrap:anywhere;margin:0 0 15px}.import-preview-title{font-size:15px;letter-spacing:-.2px;font-weight:550;margin:0 0 10px}.import-loading{font-size:11px;line-height:1.7;color:var(--accent);margin-top:12px}</style>';
+    const style = '<style>.import-summary{display:flex;align-items:center;gap:9px;flex-wrap:wrap;margin:0 0 14px;font-size:11px;color:var(--muted)}.import-summary strong{font-size:16px;font-weight:550;color:var(--accent)}.import-series{margin:13px 0;font-size:11px;color:var(--muted);line-height:1.7}.import-series p{margin:3px 0}.import-mini{font-size:10px;color:var(--muted);margin:10px 0;line-height:1.7}.import-upload-input{position:absolute;width:1px!important;height:1px!important;opacity:0;overflow:hidden;padding:0!important;min-height:0!important;clip:rect(0,0,0,0)}.import-key-form{margin-top:17px}.import-key-form .field{margin-bottom:9px}.import-partial{display:flex;gap:10px;font-size:11px;line-height:1.7;color:#edc8b4;margin:14px 0}.import-warning-list{font-size:11px;line-height:1.7;color:var(--muted);padding-left:18px;overflow-wrap:anywhere;max-height:150px;overflow:auto}.import-toolbar{display:flex;gap:8px;flex-wrap:wrap}.import-source-hint{font-size:10px;line-height:1.7;color:var(--muted);margin:13px 0}.import-draft{display:flex;align-items:center;justify-content:space-between;gap:10px;border-top:1px solid var(--line);padding-top:15px;margin-top:18px;font-size:11px;color:var(--muted)}.import-row .tag{white-space:nowrap;flex-shrink:0}.import-row.is-duplicate{opacity:.7}.import-row .import-account{overflow-wrap:anywhere}.import-drop{transition:background .15s,border-color .15s}.import-camera-controls .btn{flex:1}.import-drop:focus-visible{outline:2px solid var(--accent);outline-offset:3px}.import-drop[aria-disabled="true"]{opacity:.55;cursor:wait}.import-selection{font-size:11px;color:var(--muted);overflow-wrap:anywhere;margin:0 0 15px}.import-preview-title{font-size:15px;letter-spacing:-.2px;font-weight:550;margin:0 0 10px}.import-loading{font-size:11px;line-height:1.7;color:var(--accent);margin-top:12px}</style>';
     N().showModal('Accounts importieren','Lokal einlesen. Prüfen. Verschlüsselt speichern.',style + '<div id="importShell">' + tabsMarkup(state.tab) + '<div id="importContent" role="tabpanel"></div><div id="importError" class="inline-error" role="alert" hidden></div><div id="importDraft"></div><div class="dialog-actions" id="importActions"></div></div>',{wide:true,onClose:()=>cleanup(state)});
     if (!live(state)) return;
     $('importShell').addEventListener('click',event => {
@@ -1835,11 +1881,11 @@ var qrcodegen;
       if (!nativeAvailable) html += '<div style="margin-top:15px">' + notice('Dieser Browser bietet keine native QR-Erkennung. Füge eine Einrichtungs-URI ein oder importiere eine JSON-Datei.',true) + '</div>';
       html += uriForm();
     } else if (state.tab === 'image') {
-      html = '<input id="importImageFiles" class="import-upload-input" type="file" accept="image/png,image/jpeg,image/webp,image/gif,image/bmp,image/avif,.png,.jpg,.jpeg,.webp,.gif,.bmp,.avif" multiple><label class="dropzone import-drop" id="importDropzone" for="importImageFiles" tabindex="0" role="button">' + ico('image') + '<strong>Deinen QR-Code hier ablegen</strong><p>Bild auswählen, hineinziehen oder mit Strg/⌘ + V einfügen.<br>PNG, JPG, WebP, GIF, BMP oder AVIF · bis 15 MB pro Bild</p><span class="small-link">Bild auswählen</span></label><p class="import-source-hint">Unterstützt TOTP-Einrichtungscodes und Google-Authenticator-Exporte. Bei mehreren Google-QR-Codes kannst du alle Bilder gemeinsam auswählen.</p>';
+      html = '<input id="importImageFiles" class="import-upload-input" aria-label="QR-Bilder auswählen" tabindex="-1" type="file" accept="image/png,image/jpeg,image/webp,image/gif,image/bmp,image/avif,.png,.jpg,.jpeg,.webp,.gif,.bmp,.avif" multiple><div class="dropzone import-drop" id="importDropzone" tabindex="0" role="button" aria-controls="importImageFiles" aria-disabled="false">' + ico('image') + '<strong>Deinen QR-Code hier ablegen</strong><p>Bild auswählen, hineinziehen oder mit Strg/⌘ + V einfügen.<br>PNG, JPG, WebP, GIF, BMP oder AVIF · bis 15 MB pro Bild</p><span class="small-link">Bild auswählen</span></div><p class="import-source-hint">Unterstützt TOTP-Einrichtungscodes und Google-Authenticator-Exporte. Bei mehreren Google-QR-Codes kannst du alle Bilder gemeinsam auswählen.</p>';
       if (!nativeAvailable) html += notice('Für das Lesen von QR-Bildern fehlt diesem Browser die native Barcode Detection API. URI- und JSON-Import funktionieren weiterhin.',true);
       html += uriForm();
     } else {
-      html = '<input id="importJsonFiles" class="import-upload-input" type="file" accept="application/json,.json"><label class="dropzone import-drop" id="importDropzone" for="importJsonFiles" tabindex="0" role="button">' + ico('file') + '<strong>Dein Backup importieren</strong><p>export.json oder export.enc.json auswählen oder hier ablegen.<br>Eine JSON-Datei · bis 8 MB</p><span class="small-link">Datei auswählen</span></label><p class="import-source-hint">Eine verschlüsselte Datei benötigt ihr eigenes Export-Passwort. Vorhandene Accounts bleiben erhalten; identische Schlüssel werden übersprungen.</p>' + notice('JSON-Import unterstützt das Datenformat dieser App: Version 1 mit einer Accounts-Liste, unverschlüsselt oder als verschlüsselter App-Export.');
+      html = '<input id="importJsonFiles" class="import-upload-input" aria-label="JSON-Datei auswählen" tabindex="-1" type="file" accept="application/json,.json"><div class="dropzone import-drop" id="importDropzone" tabindex="0" role="button" aria-controls="importJsonFiles" aria-disabled="false">' + ico('file') + '<strong>Dein Backup importieren</strong><p>export.json oder export.enc.json auswählen oder hier ablegen.<br>Eine JSON-Datei · bis 8 MB</p><span class="small-link">Datei auswählen</span></div><p class="import-source-hint">Eine verschlüsselte Datei benötigt ihr eigenes Export-Passwort. Vorhandene Accounts bleiben erhalten; identische Schlüssel werden übersprungen.</p>' + notice('JSON-Import unterstützt das Datenformat dieser App: Version 1 mit einer Accounts-Liste, unverschlüsselt oder als verschlüsselter App-Export.');
     }
     $('importContent').innerHTML = html;
     const uri = $('importUriForm');
@@ -1849,8 +1895,12 @@ var qrcodegen;
     const input = $(state.tab==='image'?'importImageFiles':'importJsonFiles');
     if (input) input.addEventListener('change',()=>{if (!state.working && input.files?.length) processFiles(state,Array.from(input.files),state.tab);input.value='';});
     const drop = $('importDropzone');
-    drop?.addEventListener('keydown',event=>{if (event.key==='Enter'||event.key===' ') {event.preventDefault();if(!state.working) input.click();}});
-    drop?.addEventListener('click',event=>{if(state.working) event.preventDefault();});
+    const chooseFile = event => {
+      event.preventDefault();
+      if (live(state) && !state.working && input && !input.disabled) input.click();
+    };
+    drop?.addEventListener('keydown',event=>{if (event.key==='Enter'||event.key===' ') {event.preventDefault();if(!event.repeat)chooseFile(event);}});
+    drop?.addEventListener('click',chooseFile);
     ['dragenter','dragover'].forEach(type=>drop?.addEventListener(type,event=>{event.preventDefault();if(!state.working) drop.classList.add('dragover');}));
     drop?.addEventListener('dragleave',event=>{if(!drop.contains(event.relatedTarget)) drop.classList.remove('dragover');});
     drop?.addEventListener('drop',event=>{event.preventDefault();drop.classList.remove('dragover');if(!state.working)processFiles(state,Array.from(event.dataTransfer?.files||[]),state.tab);});
@@ -1992,67 +2042,125 @@ var qrcodegen;
     })();
     try{return await state.detectorPromise;}finally{state.detectorPromise=null;}
   }
+  function cameraLive(state,run) {
+    return live(state)&&run===state.cameraRun&&state.tab==='camera'&&state.stage==='input'&&!document.hidden;
+  }
   function stopCamera(state,status='') {
     state.cameraRun++;
+    state.playbackPending=false;state.cameraScanning=false;
     clearTimeout(state.timer);state.timer=null;
     if(state.stream){for(const track of state.stream.getTracks())track.stop();state.stream=null;}
-    if(state.video){state.video.pause();state.video.srcObject=null;state.video=null;}
+    if(state.video){
+      if(state.onCameraPlaying)state.video.removeEventListener?.('playing',state.onCameraPlaying);
+      state.video.pause();state.video.srcObject=null;state.video.controls=false;state.video=null;
+    }
+    state.onCameraPlaying=null;
     if(!live(state))return;
     const start=$('importStartCamera'),stop=$('importStopCamera');
-    if(start){start.hidden=false;start.disabled=false;N().setBusy(start,false);}
+    if(start){start.hidden=false;N().setBusy(start,false);start.innerHTML=ico('camera')+'Kamera starten';}
     if(stop)stop.hidden=true;
     const placeholder=$('importCameraPlaceholder'),guides=$('importScanGuides');
     if(placeholder)placeholder.hidden=false;if(guides)guides.hidden=true;
     if(status&&$('importCameraStatus'))$('importCameraStatus').textContent=status;
   }
+  function cameraPlaying(state,run) {
+    if(!cameraLive(state,run)||!state.stream||!state.video||state.cameraScanning)return;
+    const video=state.video,detector=state.detector;
+    state.cameraScanning=true;
+    const button=$('importStartCamera');
+    N().setBusy(button,false);button.hidden=true;
+    video.controls=false;
+    $('importStopCamera').hidden=false;$('importCameraPlaceholder').hidden=true;$('importScanGuides').hidden=false;
+    $('importCameraStatus').textContent='Kamera aktiv. TOTP- oder Google-QR-Code in den Rahmen halten.';
+    currentError('');
+    let detectorErrors=0,lastMessage='';
+    const scan=async()=>{
+      if(!cameraLive(state,run))return;
+      try{
+        if(video.readyState>=2&&video.videoWidth>0){
+          const results=await detector.detect(video);
+          if(!cameraLive(state,run))return;
+          detectorErrors=0;
+          let accepted=0;
+          for(const item of results){
+            if(!item.rawValue)continue;
+            try{addResult(state,root.AuthFormats.parseQrText(item.rawValue));accepted++;}
+            catch(error){const message=errorMessage(error);if(message!==lastMessage){lastMessage=message;$('importCameraStatus').textContent=message;}}
+          }
+          if(accepted){stopCamera(state);renderPreview(state);return;}
+        }
+      }catch(error){
+        detectorErrors++;
+        if(detectorErrors>=3){stopCamera(state,'QR-Erkennung angehalten.');currentError('Die native QR-Erkennung konnte das Kamerabild nicht lesen. Versuche ein QR-Bild oder den URI-Import.');return;}
+      }
+      if(cameraLive(state,run))state.timer=setTimeout(scan,250);
+    };
+    scan();
+  }
+  function playbackFailed(state,run,error) {
+    if(!cameraLive(state,run))return;
+    state.playbackPending=false;
+    if(error?.name==='NotAllowedError') {
+      // Camera capture is already authorized. Keep its stream for a direct user-
+      // gesture retry; a playback policy rejection is not a camera denial.
+      const button=$('importStartCamera');
+      N().setBusy(button,false);button.hidden=false;button.innerHTML=ico('camera')+'Kameravorschau starten';
+      state.video.controls=true;
+      $('importStopCamera').hidden=false;$('importCameraPlaceholder').hidden=true;$('importScanGuides').hidden=true;
+      $('importCameraStatus').textContent='Kamera erlaubt · Wiedergabe durch den Browser blockiert.';
+      currentError('Die Kamera ist freigegeben, aber der Browser blockiert die Wiedergabe des Kamerabilds (Autoplay). Klicke auf „Kameravorschau starten“ oder auf Wiedergabe im Kamerabild. Falls die Vorschau weiter blockiert bleibt, erlaube Autoplay für diese Website in den Browser-Einstellungen.');
+      return;
+    }
+    stopCamera(state,'Kameravorschau nicht verfügbar.');
+    currentError('Die Kamera wurde freigegeben, aber die Vorschau konnte nicht gestartet werden. '+errorMessage(error));
+  }
+  function playCamera(state,run) {
+    if(!cameraLive(state,run)||!state.stream||!state.video||state.playbackPending)return;
+    state.playbackPending=true;
+    N().setBusy($('importStartCamera'),true,'Vorschau startet …');
+    currentError('');
+    let playback;
+    // Keep this call synchronous, before any await, so clicking the retry button
+    // supplies the browser's transient user activation to HTMLMediaElement.play.
+    try { playback=state.video.play(); }
+    catch(error){playbackFailed(state,run,error);return;}
+    Promise.resolve(playback).then(()=>{
+      if(!cameraLive(state,run))return;
+      state.playbackPending=false;cameraPlaying(state,run);
+    },error=>playbackFailed(state,run,error));
+  }
   async function startCamera(state) {
-    if(!live(state)||state.working||state.stream||state.tab!=='camera'||state.stage!=='input')return;
+    if(!live(state)||state.working||state.tab!=='camera'||state.stage!=='input')return;
+    if(state.stream){playCamera(state,state.cameraRun);return;}
     stopCamera(state);
     const run=state.cameraRun;
     const button=$('importStartCamera');
     N().setBusy(button,true,'Kamera startet …');
     currentError('');
-    const cameraLive=()=>live(state)&&run===state.cameraRun&&state.tab==='camera'&&state.stage==='input'&&!document.hidden;
     try{
       if(!root.isSecureContext)throw new Error('Kamerazugriff benötigt HTTPS oder localhost. Öffne die App über eine sichere Adresse.');
-      const detector=await getDetector(state);
-      if(!cameraLive())return;
+      await getDetector(state);
+      if(!cameraLive(state,run))return;
       if(!navigator.mediaDevices?.getUserMedia)throw new Error('In diesem Browser ist kein Kamerazugriff verfügbar. Lade ein QR-Bild hoch oder füge eine URI ein.');
-      const stream=await navigator.mediaDevices.getUserMedia({video:{facingMode:{ideal:'environment'},width:{ideal:1280},height:{ideal:720}},audio:false});
-      if(!cameraLive()){for(const track of stream.getTracks())track.stop();return;}
+      let stream;
+      try {
+        stream=await navigator.mediaDevices.getUserMedia({video:{facingMode:{ideal:'environment'},width:{ideal:1280},height:{ideal:720}},audio:false});
+      } catch(error) {
+        if(cameraLive(state,run)){stopCamera(state,'Kamera nicht verfügbar.');currentError(cameraAccessError(error));}
+        return;
+      }
+      if(!cameraLive(state,run)){for(const track of stream.getTracks())track.stop();return;}
       const video=$('importVideo');
       state.video=video;state.stream=stream;
+      video.muted=true;video.defaultMuted=true;video.playsInline=true;
+      video.setAttribute('muted','');video.setAttribute('playsinline','');
+      state.onCameraPlaying=()=>cameraPlaying(state,run);
+      video.addEventListener('playing',state.onCameraPlaying);
       video.srcObject=stream;
-      await video.play();
-      if(!cameraLive()){stopCamera(state);return;}
-      button.hidden=true;N().setBusy(button,false);
-      $('importStopCamera').hidden=false;$('importCameraPlaceholder').hidden=true;$('importScanGuides').hidden=false;
-      $('importCameraStatus').textContent='Kamera aktiv. TOTP- oder Google-QR-Code in den Rahmen halten.';
-      let detectorErrors=0,lastMessage='';
-      const scan=async()=>{
-        if(!cameraLive())return;
-        try{
-          if(video.readyState>=2&&video.videoWidth>0){
-            const results=await detector.detect(video);
-            if(!cameraLive())return;
-            detectorErrors=0;
-            let accepted=0;
-            for(const item of results){
-              if(!item.rawValue)continue;
-              try{addResult(state,root.AuthFormats.parseQrText(item.rawValue));accepted++;}
-              catch(error){const message=errorMessage(error);if(message!==lastMessage){lastMessage=message;$('importCameraStatus').textContent=message;}}
-            }
-            if(accepted){stopCamera(state);renderPreview(state);return;}
-          }
-        }catch(error){
-          detectorErrors++;
-          if(detectorErrors>=3){stopCamera(state,'QR-Erkennung angehalten.');currentError('Die native QR-Erkennung konnte das Kamerabild nicht lesen. Versuche ein QR-Bild oder den URI-Import.');return;}
-        }
-        if(cameraLive())state.timer=setTimeout(scan,250);
-      };
-      scan();
-    }catch(error){if(cameraLive()){stopCamera(state,'Kamera nicht verfügbar.');currentError(errorMessage(error));}}
-    finally{if(cameraLive()&&!state.stream)N().setBusy(button,false);}
+      $('importStopCamera').hidden=false;
+      playCamera(state,run);
+    }catch(error){if(cameraLive(state,run)){stopCamera(state,'Kamera nicht verfügbar.');currentError(errorMessage(error));}}
+    finally{if(cameraLive(state,run)&&!state.stream)N().setBusy(button,false);}
   }
   function loadImage(state,file) {
     return new Promise((resolve,reject)=>{
@@ -2192,7 +2300,7 @@ var qrcodegen;
 
 </script>
 <script>
-/* Nexus Authenticator — application controller. All account processing stays local. */
+/* Authenticator — application controller. All account processing stays local. */
 (() => {
 'use strict';
 const $ = id => document.getElementById(id);
@@ -2233,16 +2341,20 @@ function closeModal(restore=true, force=false) {
  for(const field of $('dialogBody').querySelectorAll('input,textarea')){field.value='';field.removeAttribute('value');}
  modalBlocked=false;$('closeDialog').disabled=false;
  modalOpen=false;$('modalOverlay').hidden=true;$('dialogBody').replaceChildren();
+ $('modalOverlay').classList.remove('danger-mode');$('dialog').setAttribute('role','dialog');$('dialog').removeAttribute('aria-describedby');
  backgroundInert(false);document.body.style.overflow='';
  if(restore&&previousFocus?.isConnected&&!previousFocus.disabled)previousFocus.focus({preventScroll:true});
  previousFocus=null;
 }
 function showModal(title, subtitle, html, options={}) {
- const focus=modalOpen?previousFocus:document.activeElement;
+ let focus=modalOpen?previousFocus:document.activeElement;
+ if(focus&&$('mainMenu').contains(focus))focus=$('menuButton');
  if(modalOpen)closeModal(false,true);
  previousFocus=focus;modalCleanup=options.onClose||null;modalVersion++;modalOpen=true;
  $('dialogTitle').textContent=title;$('dialogSubtitle').textContent=subtitle||'';$('dialogSubtitle').hidden=!subtitle;
  $('dialogBody').innerHTML=html;$('dialog').classList.toggle('wide',!!options.wide);
+ $('modalOverlay').classList.toggle('danger-mode',!!options.danger);$('dialog').setAttribute('role',options.danger?'alertdialog':'dialog');
+ if(options.danger)$('dialog').setAttribute('aria-describedby','wipeWarning');else $('dialog').removeAttribute('aria-describedby');
  $('modalOverlay').hidden=false;backgroundInert(true);document.body.style.overflow='hidden';$('dialog').scrollTop=0;
  const v=modalVersion;
  requestAnimationFrame(()=>{if(v===modalVersion){const focusable=$('dialogBody').querySelector('[autofocus]');(focusable||$('dialog')).focus({preventScroll:true});}});
@@ -2252,12 +2364,13 @@ function modalStill(v){return modalOpen&&v===modalVersion;}
 function getRemembered(){try{return AuthStorage.getRemembered();}catch{return null;}}
 function applyPrivacy(remembered=!!getRemembered()) {
  document.documentElement.dataset.privacy=remembered?'off':'on';
+ $('lockButton').hidden=!session||remembered;$('toolbarActions').hidden=!session||remembered;
  $('privacyBanner').hidden=!remembered||!session;
  $('privacyMenu').innerHTML=icon('shield')+'<span>Privatsphäre aktivieren</span>'+icon(remembered?'alert':'check','menu-state');
  $('privacyMenu').setAttribute('aria-pressed',String(!remembered));
  $('footerState').textContent=remembered?'AUTO-ENTSPERRUNG AKTIV':'AES-256-GCM';
 }
-function menuOpen(open){$('mainMenu').hidden=!open;$('menuButton').setAttribute('aria-expanded',String(open));}
+function menuOpen(open){open=!!open&&!!session;$('mainMenu').hidden=!open;$('menuButton').setAttribute('aria-expanded',String(open));}
 function wipeVisibleSecrets(){
  codeCache.clear();rendering++;$('accountsList').replaceChildren();$('search').value='';
  $('authPassword').value='';$('authConfirm').value='';$('authPassword').type='password';$('authConfirm').type='password';
@@ -2273,6 +2386,7 @@ function setAuthView(mode, message='') {
  // the normal label before addressing authSubmitLabel.
  authBusy=false;++authRun;setBusy($('authSubmit'),false);
  authMode=mode;$('authView').hidden=false;$('accountsView').hidden=true;
+ $('menuButton').disabled=true;$('menuButton').title='Menü nach dem Entsperren verfügbar';menuOpen(false);
  $('searchBox').hidden=true;$('toolbarActions').hidden=true;$('securityPill').hidden=false;$('topSpacer').hidden=false;
  $('topbar').classList.remove('unlocked');$('sortBar').hidden=true;sorting=false;
  $('authForm').hidden=mode==='fatal'||mode==='loading';$('authWipe').hidden=mode==='setup'||mode==='loading';
@@ -2291,6 +2405,7 @@ function enterSession(vault,key,r){
  session={vault,key,envelope:r.envelope,revision:r.revision,epoch:++epoch};record=r;codeCache.clear();
  $('authPassword').value='';$('authConfirm').value='';$('authView').hidden=true;$('accountsView').hidden=false;
  $('searchBox').hidden=false;$('toolbarActions').hidden=false;$('securityPill').hidden=true;$('topSpacer').hidden=true;
+ $('menuButton').disabled=false;$('menuButton').title='Authenticator-Menü öffnen';
  $('topbar').classList.add('unlocked');applyPrivacy();renderAccounts();
 }
 async function boot({auto=true,message=''}={}) {
@@ -2512,9 +2627,55 @@ function openExport(){
   }catch(err){if(modalStill(v))showError('exportError',formatError(err));}finally{setBusy(button,false);}
  };update();
 }
+function createWipeAlarm(){
+ // Synthesized locally: no sound file, URL, network request or persisted setting.
+ let context=null,cancelled=false,played=false,deadline=null,finishTimer=null;
+ const nodes=[];
+ function stop(){
+  if(cancelled)return;cancelled=true;clearTimeout(deadline);clearTimeout(finishTimer);
+  for(const node of nodes){try{if(typeof node.stop==='function')node.stop();}catch{}try{node.disconnect();}catch{}}
+  nodes.length=0;
+  if(context){try{const closing=context.close();closing?.catch?.(()=>{});}catch{}context=null;}
+ }
+ function start(isCurrent){
+  const live=()=>!cancelled&&isCurrent();
+  const status=message=>{if(live()&&$('wipeAudioText'))$('wipeAudioText').textContent=message;};
+  const blocked=()=>{status('Warnton nicht verfügbar oder vom Browser blockiert. Die helle Warnansicht bleibt aktiv.');stop();};
+  const AudioContextClass=globalThis.AudioContext||globalThis.webkitAudioContext;
+  if(!AudioContextClass){blocked();return;}
+  const play=()=>{
+   if(!live()){stop();return;}
+   if(!context||context.state!=='running'){blocked();return;}
+   clearTimeout(deadline);played=true;
+   try{
+    const startTime=context.currentTime+.025;
+    [880,1175,880].forEach((frequency,index)=>{
+     const oscillator=context.createOscillator(),gain=context.createGain();nodes.push(oscillator,gain);
+     const at=startTime+index*.43,end=at+.29;
+     oscillator.type='sine';oscillator.frequency.setValueAtTime(frequency,at);
+     gain.gain.setValueAtTime(0,at);gain.gain.linearRampToValueAtTime(.18,at+.018);
+     gain.gain.setValueAtTime(.18,end-.04);gain.gain.linearRampToValueAtTime(0,end);
+     oscillator.connect(gain);gain.connect(context.destination);oscillator.start(at);oscillator.stop(end+.015);
+    });
+    status('Warnton ausgelöst. Ob er hörbar ist, hängt von der Lautstärke und den Toneinstellungen deines Geräts ab.');
+    finishTimer=setTimeout(stop,1450);
+   }catch{blocked();}
+  };
+  try{
+   // Called synchronously from the user's click/keyboard action on "Zurücksetzen".
+   context=new AudioContextClass();
+   if(context.state==='running'){play();return;}
+   deadline=setTimeout(()=>{if(!played)blocked();},1400);
+   Promise.resolve(context.resume()).then(()=>{if(live())play();}).catch(()=>{if(live())blocked();});
+  }catch{blocked();}
+ }
+ return {start,stop};
+}
 function openWipe(){
  if(localWiping||remoteWiping){toast('Der Tresor wird bereits zurückgesetzt. Bitte warte auf den Abschluss.',true);return;}
- const v=showModal('Tresor zurücksetzen?','Alle lokalen Accounts und das gespeicherte Passwort werden gelöscht.',`<div class="notice warning">${icon('alert')}<span>Dieser Schritt kann nicht rückgängig gemacht werden. Deine Accounts bei den Anbietern bleiben bestehen. Ohne Backup oder alternative Anmeldung können dir danach die benötigten Codes fehlen.</span></div><form id="wipeForm" style="margin-top:22px"><div class="field"><label for="wipePhrase">Zum Bestätigen LÖSCHEN eingeben</label><input id="wipePhrase" autocomplete="off" autocapitalize="characters" spellcheck="false" required placeholder="LÖSCHEN"></div><div class="inline-error" id="wipeError" role="alert" hidden></div><div class="dialog-actions"><button class="btn subtle" type="button" id="cancelWipe">Abbrechen</button><button class="btn danger" type="submit" id="confirmWipe">${icon('trash')}Alles löschen</button></div></form>`);
+ const alarm=createWipeAlarm();
+ const v=showModal('Tresor endgültig löschen?','Alle lokalen Accounts und das gespeicherte Passwort werden entfernt.',`<div class="wipe-signal">${icon('alert')}ACHTUNG · UNWIDERRUFLICHE LÖSCHUNG</div><div class="notice warning" id="wipeWarning"><strong>Du löschst alle Einrichtungsschlüssel in diesem Tresor.</strong>Dieser Schritt kann nicht rückgängig gemacht werden. Deine Accounts bei den Anbietern bleiben bestehen. Ohne Backup oder alternative Anmeldung können dir danach die benötigten Codes fehlen.</div><p class="wipe-audio-status" role="status">${icon('info')}<span id="wipeAudioText">Warnton wird gestartet …</span></p><form id="wipeForm" style="margin-top:22px"><div class="field"><label for="wipePhrase">Zum Bestätigen LÖSCHEN eingeben</label><input id="wipePhrase" autocomplete="off" autocapitalize="characters" spellcheck="false" required placeholder="LÖSCHEN"></div><div class="inline-error" id="wipeError" role="alert" hidden></div><div class="dialog-actions"><button class="btn subtle" type="button" id="cancelWipe" autofocus>Abbrechen</button><button class="btn danger" type="submit" id="confirmWipe">${icon('trash')}Alles löschen</button></div></form>`,{danger:true,onClose:()=>alarm.stop()});
+ alarm.start(()=>modalStill(v));
  $('cancelWipe').onclick=()=>closeModal();
  $('wipeForm').onsubmit=async e=>{
   e.preventDefault();const button=$('confirmWipe');if(button.disabled)return;
@@ -2536,7 +2697,7 @@ function openWipe(){
  };
 }
 function showAbout(){
- showModal('Dein Tresor. Dein Gerät.','Nexus Authenticator · Version 1.0',`<div class="about-grid"><div class="about-item"><small>Verschlüsselung</small><strong>AES-256-GCM</strong></div><div class="about-item"><small>Schlüsselableitung</small><strong>PBKDF2 · 600.000</strong></div><div class="about-item"><small>Speicherung</small><strong>IndexedDB · lokal</strong></div><div class="about-item"><small>QR-Erzeugung</small><strong>Vollständig offline</strong></div></div><div class="about-copy"><h3>So bleibt dein Tresor verfügbar</h3><p>Verwende dauerhaft denselben Browser und dieselbe Adresse. Ein anderer Browser, ein anderer Port oder eine andere Domain hat einen eigenen Speicher. Öffne diese HTML-Datei möglichst über HTTPS oder localhost. Bei direkt geöffneten Dateien hängt die Speicher- und Kameraunterstützung vom Browser ab.</p><p>Wenn du Browserdaten löschst oder der Browser Speicher entfernt, kann der Tresor verloren gehen. Erstelle daher regelmäßig einen verschlüsselten JSON-Export und bewahre sein Passwort getrennt auf.</p><h3>Was „Privatsphäre“ bedeutet</h3><p>Blau: Das Passwort wird nicht gespeichert; beim Neuladen entsperrst du den Tresor selbst. Rot: Das Passwort liegt lesbar im localStorage und wird zum automatischen Entsperren verwendet. Der Sperren-Button entfernt das gespeicherte Passwort.</p><h3>QR-Codes und Importe</h3><p>Die Kamera und Bilderkennung verwenden ausschließlich die native Barcode Detection API, sofern dein Browser QR-Codes damit unterstützt. Ohne diese API kannst du weiterhin Einrichtungsschlüssel, <code>otpauth://</code>-Links und JSON-Dateien importieren. Kamerazugriff erfolgt erst nach deinem Klick.</p><p>Unterstützt werden TOTP mit SHA1, SHA256 und SHA512, 6 oder 8 Stellen sowie Google-Authenticator-Migrationen. HOTP-Einträge werden beim Import mit Hinweis ausgelassen. Verschlüsselte JSON-Importe müssen dem Nexus-Exportformat entsprechen; es gibt kein einheitliches Format aller Authenticator-Apps.</p><h3>Alles bleibt auf dieser Seite</h3><p>QR-Erzeugung, Verschlüsselung, Entschlüsselung und TOTP-Berechnung laufen direkt im Browser. Es gibt keine externen Skripte, Schriften, Analytik oder QR-Dienste. Die QR-Bibliothek von Project Nayuki ist mit MIT-Lizenz vollständig in dieser HTML-Datei enthalten.</p><h3>Grenzen des Schutzes</h3><p>Ein entsperrter Tresor zeigt deine Codes an. Das Passwort schützt die gespeicherten Daten, aber nicht vor schädlichen Browsererweiterungen oder einem kompromittierten Gerät. Eine falsch eingestellte Gerätezeit kann ungültige Codes verursachen.</p></div><div class="dialog-actions"><button class="btn primary" id="closeAbout">Verstanden</button></div>`,{wide:true});
+ showModal('Dein Tresor. Dein Gerät.','Authenticator · Version 1.1',`<div class="about-grid"><div class="about-item"><small>Verschlüsselung</small><strong>AES-256-GCM</strong></div><div class="about-item"><small>Schlüsselableitung</small><strong>PBKDF2 · 600.000</strong></div><div class="about-item"><small>Speicherung</small><strong>IndexedDB · lokal</strong></div><div class="about-item"><small>QR-Erzeugung</small><strong>Vollständig offline</strong></div></div><div class="about-copy"><h3>So bleibt dein Tresor verfügbar</h3><p>Verwende dauerhaft denselben Browser und dieselbe Adresse. Ein anderer Browser, ein anderer Port oder eine andere Domain hat einen eigenen Speicher. Öffne diese HTML-Datei möglichst über HTTPS oder localhost. Bei direkt geöffneten Dateien hängt die Speicher- und Kameraunterstützung vom Browser ab.</p><p>Wenn du Browserdaten löschst oder der Browser Speicher entfernt, kann der Tresor verloren gehen. Erstelle daher regelmäßig einen verschlüsselten JSON-Export und bewahre sein Passwort getrennt auf.</p><h3>Was „Privatsphäre“ bedeutet</h3><p>Blau: Das Passwort wird nicht gespeichert; beim Neuladen entsperrst du den Tresor selbst. Rot: Das Passwort liegt lesbar im localStorage und wird zum automatischen Entsperren verwendet. Im roten Modus ist das Schloss ausgeblendet. Aktiviere zuerst die Privatsphäre, wenn du den Tresor wieder per Schloss sperren möchtest.</p><h3>QR-Codes und Importe</h3><p>Die Kamera und Bilderkennung verwenden ausschließlich die native Barcode Detection API, sofern dein Browser QR-Codes damit unterstützt. Ohne diese API kannst du weiterhin Einrichtungsschlüssel, <code>otpauth://</code>-Links und JSON-Dateien importieren. Kamerazugriff erfolgt erst nach deinem Klick.</p><p>Unterstützt werden TOTP mit SHA1, SHA256 und SHA512, 6 oder 8 Stellen sowie Google-Authenticator-Migrationen. HOTP-Einträge werden beim Import mit Hinweis ausgelassen. Verschlüsselte JSON-Importe müssen dem Exportformat dieser App entsprechen; es gibt kein einheitliches Format aller Authenticator-Apps.</p><h3>Alles bleibt auf dieser Seite</h3><p>QR-Erzeugung, Verschlüsselung, Entschlüsselung und TOTP-Berechnung laufen direkt im Browser. Es gibt keine externen Skripte, Schriften, Analytik oder QR-Dienste. Die QR-Bibliothek von Project Nayuki ist mit MIT-Lizenz vollständig in dieser HTML-Datei enthalten.</p><h3>Grenzen des Schutzes</h3><p>Ein entsperrter Tresor zeigt deine Codes an. Das Passwort schützt die gespeicherten Daten, aber nicht vor schädlichen Browsererweiterungen oder einem kompromittierten Gerät. Eine falsch eingestellte Gerätezeit kann ungültige Codes verursachen.</p></div><div class="dialog-actions"><button class="btn primary" id="closeAbout">Verstanden</button></div>`,{wide:true});
  $('closeAbout').onclick=()=>closeModal();
 }
 function updateSearch(){const has=!!$('search').value;$('clearSearch').hidden=!has;$('searchShortcut').hidden=has;}
@@ -2548,14 +2709,15 @@ document.addEventListener('click',e=>{
  if(!e.target.closest('.menu-wrap'))menuOpen(false);
 });
 $('menuButton').onclick=()=>menuOpen($('mainMenu').hidden);
-$('lockButton').onclick=()=>void lock();$('authWipe').onclick=openWipe;
+$('menuButton').onkeydown=e=>{if(session&&(e.key==='ArrowDown'||e.key==='ArrowUp')){e.preventDefault();menuOpen(true);const buttons=[...$('mainMenu').querySelectorAll('button:not(:disabled)')];(e.key==='ArrowUp'?buttons.at(-1):buttons[0])?.focus();}};
+$('lockButton').onclick=()=>{if(session&&!getRemembered())void lock();};$('authWipe').onclick=openWipe;
 $('enablePrivacy').onclick=()=>void enablePrivacy();$('closeDialog').onclick=()=>closeModal();
 $('modalOverlay').addEventListener('click',e=>{if(e.target===$('modalOverlay'))closeModal();});
 $('search').oninput=()=>{updateSearch();renderAccounts();};$('clearSearch').onclick=clearSearch;$('emptyClearSearch').onclick=clearSearch;
 $('rememberPassword').onchange=()=>applyPrivacy($('rememberPassword').checked);
 $('finishSort').onclick=async()=>{const button=$('finishSort');setBusy(button,true,'Wird gespeichert …');try{await saveQueue;if(session)toast('Reihenfolge gespeichert.');}catch(e){toast(formatError(e),true);}finally{if(session){sorting=false;stopDragging();renderAccounts();}setBusy(button,false);}};
 document.addEventListener('keydown',e=>{
- if(e.key==='Escape'){if(modalOpen){e.preventDefault();closeModal();}else menuOpen(false);return;}
+ if(e.key==='Escape'){if(modalOpen){e.preventDefault();closeModal();}else if(!$('mainMenu').hidden){e.preventDefault();menuOpen(false);$('menuButton').focus();}return;}
  if(modalOpen&&e.key==='Tab'){
   const list=[...$('dialog').querySelectorAll('button,input,select,textarea,a[href],[tabindex]')].filter(el=>!el.disabled&&el.tabIndex>=0&&el.getClientRects().length>0);
   if(!list.length){e.preventDefault();$('dialog').focus();return;}
@@ -2564,7 +2726,6 @@ document.addEventListener('keydown',e=>{
   else if(!e.shiftKey&&document.activeElement===last){e.preventDefault();first.focus();}
  }
  if(e.key==='/'&&!modalOpen&&session&&!sorting&&!['INPUT','TEXTAREA','SELECT'].includes(document.activeElement.tagName)){e.preventDefault();$('search').focus();}
- if(e.key==='Enter'&&!$('mainMenu').hidden&&document.activeElement===$('menuButton')){e.preventDefault();$('mainMenu').querySelector('button').focus();}
 });
 document.addEventListener('visibilitychange',()=>{if(!document.hidden)void tick();});
 window.addEventListener('pagehide',()=>{discardSession();closeModal(false,true);menuOpen(false);setAuthView('loading');});
