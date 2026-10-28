@@ -1,7 +1,7 @@
 /* Authenticator Service Worker — offline-first App-Shell, keine Netzwerkquellen. */
 'use strict';
 
-const VERSION      = 'auth-sw-v1';
+const VERSION      = 'auth-sw-v2';
 const SHELL_CACHE  = `shell-${VERSION}`;
 const ASSET_CACHE  = `assets-${VERSION}`;
 
@@ -14,7 +14,6 @@ const SHELL = [
   './authformats.js',
   './qrcodegen.js',
   './importui.js',
-  './about.js',
   './manifest.webmanifest',
   './icons/icon.svg',
   './icons/icon-192.png',
